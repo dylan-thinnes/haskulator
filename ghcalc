@@ -1,0 +1,27 @@
+#!/bin/bash
+# Obtain final calculation to be output
+CALCULATION=$1
+
+# Shift out any precalculations for input of filenames
+shift
+
+# Begin acting on collected data
+if [ -z "$CALCULATION" ]; then
+    # If there is no calculation, exit
+    echo "No calculation supplied."
+else
+    # If any files have been supplied through arguments, cat them in
+    CALC="main = putStrLn . show $ $CALCULATION"
+
+    # If no additional arguments are there, pipe the calculation to runghc
+    if [ -z "$*" ]; then
+        echo $CALC | runghc
+    else
+        # If additional command line arguments were supplied, cat those files
+        # then pipe the calculation to runghc
+        CATIFY="cat $*" 
+        (
+            $CATIFY 2>/dev/null; echo $CALC
+        ) | runghc
+    fi
+fi
