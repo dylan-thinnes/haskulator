@@ -10,7 +10,7 @@ You can also define dependencies off which to work.
 
 ## Installation
 haskulator is a bash script which is dependent on `runghc`, which comes installed with the Glasgow Haskell Compiler.  
-Clone or download the file named "haskulate" from this repository.  
+Clone or download the file named `haskulate` from this repository.  
 Place it somewhere on your PATH and make sure it is executable.
 
 ## Usage
