@@ -1,11 +1,16 @@
 # haskulator
-A quick haskell scratchpad, useful for calculations but extensible to quite a bit more.
+A quick haskell scratchpad bash script, useful for calculations but extensible to quite a bit more.
 
 ## What It Does
 The haskulator is very simple. You give it a single line command to execute, and it will compile and run that for you in Haskell.
 By using Haskell's rather powerful type system, we have access to a wide range of useful number types and operations for them.
 By using Haskell's rather terse yet visually obvious nature, it is easy to compose calculations while maintaining readability.
 You can define dependencies off which to work.
+
+## Installation
+haskulator is a bash script which is dependent on runghc, which should come installed with the Glasgow Haskell Compiler.
+Clone or download the file named "haskulator" from this repository.
+Place it somewhere on your PATH and make sure it is executable.
 
 ## Usage
 ```
