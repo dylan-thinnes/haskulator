@@ -1,22 +1,23 @@
 # haskulator
-A quick haskell scratchpad bash script, useful for calculations but extensible to quite a bit more.
+A quick Haskell scratchpad bash script, useful for calculations but extensible to quite a bit more.
 
 ## What It Does
-The haskulator is very simple. You give it a single line command to execute, and it will compile and run that for you in Haskell.
-By using Haskell's rather powerful type system, we have access to a wide range of useful number types and operations for them.
-By using Haskell's rather terse yet visually obvious nature, it is easy to compose calculations while maintaining readability.
-You can define dependencies off which to work.
+The haskulator is very simple. You give it a single line command to execute, and it will compile and run that for you in Haskell.  
+By using Haskell's rather powerful type system, we have access to a wide range of useful number types and operations for them.  
+By using Haskell's rather terse yet visually obvious nature, it is easy to compose calculations while maintaining readability.  
+
+You can also define dependencies off which to work.
 
 ## Installation
-haskulator is a bash script which is dependent on runghc, which should come installed with the Glasgow Haskell Compiler.
-Clone or download the file named "haskulate" from this repository.
+haskulator is a bash script which is dependent on `runghc`, which comes installed with the Glasgow Haskell Compiler.  
+Clone or download the file named `haskulate` from this repository.  
 Place it somewhere on your PATH and make sure it is executable.
 
 ## Usage
 ```
 $ haskulate <computation> [<dependency files>...]
 ```
-The first argument defines the computation to be made.
+The first argument defines the computation to be made.  
 All future arguments define files to concatenate before the computation, which simplifies pulling in dependencies or pre-defined functions. File concatenation is done using `cat` under the hood, so the `-` stdin option is available to this program.
 
 This allows you to define simple initial computations such as `a` to be evaluated and then define the meat of your calculation in other files.
@@ -36,7 +37,7 @@ $ haskulate 2^1000
 ```
 
 ## Defining Dependencies
-By creating dependency files, common functions and imported libraries can be easily used.
+By creating dependency files, common functions and imported libraries can be easily used.  
 **`/home/me/utils.hs`**
 ```haskell
 -- definition of the fibonacci sequence
@@ -47,7 +48,7 @@ After defining your files, you require them as follows:
 $ haskulate "take 10 f" ~/utils.hs
 [1,1,2,3,5,8,13,21,34,55]
 ```
-The files are concatenated before one another in order.
+The files are concatenated before one another in order.  
 The definition of the first file passed is concatenated, then the definition of the second, etc, then the last is the first argument passed.
 
 ## Using Standard Input
@@ -65,8 +66,8 @@ main = putStrLn . show $ a
 ```
 This program is then piped to `runghc` to produce the output `102`
 
-A more realistic yet still simple use case for this would be as follows, 
-to compute the sum of the first 100 elements of a geometric progression.
+A more realistic yet still simple use case for this would be as follows.  
+This computes the sum of the first 100 elements of a geometric progression with u1 = 1 and r = 2/3.
 ```sh
 $ haskulate "sum shortL" -
 l = iterate (*(2/3)) 1
