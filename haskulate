@@ -15,13 +15,13 @@ else
 
     # If no additional arguments are there, pipe the calculation to runghc
     if [ -z "$*" ]; then
-        echo $CALC | runghc
+        echo "$CALC" | runghc
     else
         # If additional command line arguments were supplied, cat those files
         # then pipe the calculation to runghc
         CATIFY="cat $*" 
         (
-            $CATIFY 2>/dev/null; echo $CALC
+            $CATIFY 2>/dev/null; echo "$CALC"
         ) | runghc
     fi
 fi
